@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	>
+
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>show restaurants</title>
+
+<script>
+	function checkRadioSelect() 
+	{ 
+		//alert(document.getElementById("showrest:resId").value);
+		if(document.getElementById("showrest:resId").value==0){ 
+		alert("Please select a restaurant");
+		return false;
+		} 
+	} 
+	
+/*<![CDATA[*/
+function radioSelect()
+{
+	id = window.event.srcElement.id;
+	var radioList = document.getElementsByTagName('input');
+	var i=0;
+	for(i=0;i<radioList.length;i++)
+	{
+		node = radioList[i];
+		if (node.getAttribute('type') == 'radio' && node.checked)
+		 {
+		 	document.getElementById(node.id).checked=false;
+		 }
+	}
+	document.getElementById(id).checked=true;
+	document.getElementById("showrest:resId").value = document.getElementById(id).value;
+	
+	}
+/*]]>*/
+</script>
+</h:head>
+
+<h:body>
+ <ui:include src="default.xhtml"/>
+<br></br>
+<h:form id="showrest">
+
+<h:inputHidden id = "resId" name="resId" value="#{restaurantBean.resId}"></h:inputHidden>
+
+ <h:dataTable value="#{restaurantBean.restaurantList}" var="restaurants" border="2"
+            cellspacing="1" cellpadding="1" >
+             <h:column >
+           		<h:selectOneRadio onclick="javascript:radioSelect();">
+           			<f:selectItem itemValue="#{restaurants.id}"></f:selectItem>
+           		</h:selectOneRadio>
+           	</h:column>
+           
+            <h:column >
+                    <f:facet name="header">
+               			<h:outputText align="center" value="RestaurantsName" />
+               		</f:facet>
+                 	<h:outputText align="center" value="#{restaurants.name}" />   
+                </h:column>
+            <h:column>
+            	<f:facet name="header">
+                	<h:outputText align="center" value="Location" />
+                </f:facet>
+                	<h:outputText align="center" value=" #{restaurants.areaName}" /> 
+            </h:column>
+           
+           
+ </h:dataTable>
+ <h:commandButton value="ViewRatings" onclick="return checkRadioSelect();" action="#{ restaurantBean.viewRatings()}"/>
+ <h:commandButton value="GiveRating"   onclick="return checkRadioSelect();" action="#{ restaurantBean.rateRestaurant()}"/>
+ 
+</h:form>
+</h:body>
+</html>

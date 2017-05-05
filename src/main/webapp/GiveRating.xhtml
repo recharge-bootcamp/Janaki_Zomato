@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	>
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Rate Restaurant</title>
+<script>
+	function checkValues(){
+		if(document.getElementById("giveRating:username").value==""){ 
+			alert("Please enter username");
+			return false;
+		}
+			if(document.getElementById("giveRating:comments").value==""){ 
+				alert("Please enter comments");
+				return false;
+		
+	}
+	}
+</script>
+</h:head>
+
+<h:body>
+  <ui:include src="default.xhtml"/>
+<h:form id="giveRating">
+
+	<table id="ratings" align="center">
+		<tr>
+			<td>
+			<h:outputText value="*Username:"></h:outputText>
+			</td>
+			<td>
+			<h:inputText id="username" value="#{restaurantBean.username}"></h:inputText>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<h:outputText value="*Food:"></h:outputText>
+			</td>
+			<td>
+			<h:selectOneMenu id="food" value="#{restaurantBean.food}">
+			   	<f:selectItem itemValue="5" itemLabel="5" />
+			   	<f:selectItem itemValue="4" itemLabel="4" />
+			   	<f:selectItem itemValue="3" itemLabel="3" />
+			   	<f:selectItem itemValue="2" itemLabel="2" />
+			   	<f:selectItem itemValue="1" itemLabel="1" />
+			</h:selectOneMenu>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<h:outputText value="*Service:"></h:outputText>
+			</td>
+			<td>
+			<h:selectOneMenu id="service" value="#{restaurantBean.service}">
+			   	<f:selectItem itemValue="5" itemLabel="5" />
+			   	<f:selectItem itemValue="4" itemLabel="4" />
+			   	<f:selectItem itemValue="3" itemLabel="3" />
+			   	<f:selectItem itemValue="2" itemLabel="2" />
+			   	<f:selectItem itemValue="1" itemLabel="1" />
+			</h:selectOneMenu>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<h:outputText value="*Ambience:"></h:outputText>
+			</td>
+			<td>
+			<h:selectOneMenu id="ambience" value="#{restaurantBean.ambience}">
+			   <f:selectItem itemValue="5" itemLabel="5" />
+			   	<f:selectItem itemValue="4" itemLabel="4" />
+			   	<f:selectItem itemValue="3" itemLabel="3" />
+			   	<f:selectItem itemValue="2" itemLabel="2" />
+			   	<f:selectItem itemValue="1" itemLabel="1" />
+			</h:selectOneMenu>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<h:outputText value="*Comments:"></h:outputText>
+			</td>
+			<td>
+			<h:inputTextarea id="comments" value="#{restaurantBean.comments}"></h:inputTextarea>
+			</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><h:commandButton value="Submit" onclick=" return checkValues()" action="#{ restaurantBean.submitRating()}"/></td>
+		</tr>
+	</table>
+	
+	
+</h:form>
+</h:body>
+</html>

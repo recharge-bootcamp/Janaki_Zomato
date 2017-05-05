@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14934925365161" configfile="/paypalzomato/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="welcome.xhtml" id="pf14936199831160" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14938020637800 pf14938020637803" path="/default.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="SearchRestaurants.xhtml" id="pf14936341571496" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf14938021853499" inlinks="pf14938020637800" path="/SearchRestaurants.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ShowRestaurants.xhtml" id="pf14938020637806" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf149380450862422 pf149380450862423 pf14938261651070" inlinks="pf14938020637803 pf14938261651070" path="/ShowRestaurants.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="RestaurantList.xhtml" id="pf149380218534912" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf14938021853499" path="/RestaurantList.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="GiveRating.xhtml" id="pf149380450862424" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf149380450862422" path="/GiveRating.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="Ratings.xhtml" id="pf149380450862425" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf149380450862423" path="/Ratings.xhtml"/>
+  <links id="pf14938020637800" target="pf14936341571496" source="pf14936199831160" outcome="search" redirect="true"/>
+  <links id="pf14938020637803" target="pf14938020637806" source="pf14936199831160" outcome="ShowRestaurants" redirect="true"/>
+  <links id="pf14938021853499" target="pf149380218534912" source="pf14936341571496" outcome="success" redirect="true"/>
+  <links id="pf149380450862422" target="pf149380450862424" source="pf14938020637806" outcome="giveRating" redirect="true"/>
+  <links id="pf149380450862423" target="pf149380450862425" source="pf14938020637806" outcome="viewRatings" redirect="true"/>
+  <links id="pf14938261651070" target="pf14938020637806" source="pf14938020637806" outcome="ShowRestaurants" redirect="true"/>
+</pageflow:Pageflow>

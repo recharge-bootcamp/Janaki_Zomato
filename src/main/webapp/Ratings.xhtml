@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	>
+
+
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Restaurant Ratings</title>
+</h:head>
+
+<h:body>
+  <ui:include src="default.xhtml"/>
+  <br></br>
+<h:form id="ratinglist">
+
+ <h:dataTable value="#{restaurantBean.restRatingsList}" var="restRating" border="2"
+            cellspacing="1" cellpadding="1">
+            
+            <h:column >
+                <f:facet name="header">
+               		<h:outputText align="center" value="UserName" />
+               	</f:facet>
+                 	<h:outputText align="center" value="#{restRating.username}" />   
+            </h:column>
+            
+            <h:column >
+                <f:facet name="header">
+               		<h:outputText align="center" value="Food" />
+               	</f:facet>
+                 	<h:outputText align="center" value="#{restRating.food}" />   
+            </h:column>
+            <h:column>
+            	<f:facet name="header">
+                <h:outputText align="center" value="Service" />
+                </f:facet>
+                <h:outputText align="center" value=" #{restRating.service}" /> 
+            </h:column>
+            <h:column>
+             <f:facet name="header">
+                <h:outputText align="center" value="Ambience" />
+             </f:facet>
+                <h:outputText align="center" value=" #{restRating.ambience}" /> 
+            </h:column>
+            <h:column>
+             <f:facet name="header">
+                <h:outputText align="center" value="Comments" />
+             </f:facet>
+                <h:outputText align="center" value=" #{restRating.comments}" /> 
+            </h:column>
+           
+ </h:dataTable>
+
+</h:form>
+</h:body>
+</html>
